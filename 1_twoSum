@@ -1,0 +1,22 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        seen = {}
+        for index, element in enumerate(nums):
+            find_another = target - element
+
+            if find_another in seen:
+                return[seen[find_another],index]
+
+            seen[element] = index
+
+        return []        
+obj = Solution()
+answer = obj.twoSum([2, 7, 11, 15], 9)
+
+print()
+print("Final Answer:", answer)

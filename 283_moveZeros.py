@@ -10,8 +10,6 @@ class Solution(object):
 
         return nums
 
-
-# Driver Code
 nums = [0, 1, 0, 3, 12]
 
 sol = Solution()
