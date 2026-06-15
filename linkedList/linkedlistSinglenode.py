@@ -1,0 +1,9 @@
+class ListNode:
+    def __init__(self, val=0):
+        self.val = val
+        self.next = None
+
+node = ListNode(10)
+print(node.val)  # Output: 10
+print(node.next)  # Output: None    
+        
