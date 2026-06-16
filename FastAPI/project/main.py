@@ -1,4 +1,6 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy import create_engine, String
@@ -49,11 +51,13 @@ class BlogResponse(BlogCreate):
 
 app = FastAPI(title="Blog API")
 
-@app.get("/")
-def home():
-    return {
-        "message": "Blog API is running successfully 🚀"
-    }
+templates = Jinja2Templates(directory="templates")
+@app.get("/", response_class=HTMLResponse)
+def home(request: Request):
+    return templates.TemplateResponse(
+        "index.html",
+        {"request": request}
+    )
 
 app.add_middleware(
     CORSMiddleware,
